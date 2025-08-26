@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { ChakraProvider, Box, VStack } from '@chakra-ui/react';
+import Header from './components/Header';
+import LandingSection from './components/LandingSection';
+import ProjectsSection from './components/ProjectsSection';
+import ContactMeSection from './components/ContactMeSection';
+import Footer from './components/Footer';
+import { AlertProvider } from './context/alertContext';
+import Alert from './components/Alert';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider>
+      <AlertProvider>
+        <Box minH="100vh" display="flex" flexDirection="column">
+          <Header />
+          <Box as="main" flex="1" py={8}>
+            <VStack spacing={12} align="stretch">
+
+              
+              <ErrorBoundary>
+                <LandingSection />
+              </ErrorBoundary>
+              
+              <ErrorBoundary>
+                <ProjectsSection />
+              </ErrorBoundary>
+              
+              <ErrorBoundary>
+                <ContactMeSection />
+              </ErrorBoundary>
+            </VStack>
+          </Box>
+          <Footer />
+          <Alert />
+        </Box>
+      </AlertProvider>
+    </ChakraProvider>
   );
 }
 
