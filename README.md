@@ -24,7 +24,7 @@ It showcases my profile, social links, and contact details.
 Clone the project and install dependencies:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/portfolio-app.git
+git clone https://github.com/Lakshman2405/portfolio-app.git
 cd portfolio-app
 npm install
 npm start
